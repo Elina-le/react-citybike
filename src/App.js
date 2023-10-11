@@ -7,11 +7,14 @@ import NavigationBar from './components/navigation';
 import StationList from './components/stationList';
 import JourneyList from './components/journeyList';
 import HomePage from './pages/homepage';
+import SingleStation from './components/singleStation';
+
 
 const router = createBrowserRouter([
   { path: '/', element: <HomePage />},
-  { path: "stationpage", element: <StationList />},
-  { path: "journeypage", element: <JourneyList />}
+  { path: "stations", element: <StationList />},
+  { path: "journeys", element: <JourneyList />},
+  { path: "/stations/:id", element: <SingleStation />}
 ]);
 
 function App() {

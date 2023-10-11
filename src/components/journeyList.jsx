@@ -14,7 +14,7 @@ const JourneyList = () => {
 
     return (
         <div>
-            <h1>Journeys</h1>
+            <h1>Journey List</h1>
 
             <table className="table">
                 <thead>
