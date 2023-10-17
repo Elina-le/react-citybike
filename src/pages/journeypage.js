@@ -1,5 +1,4 @@
 import React from "react";
-import JourneyList from '../components/journeyList';
 
 const JourneyPage = () => {
     return (

@@ -3,11 +3,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import NavigationBar from './components/navigation';
-import StationList from './components/stationList';
-import JourneyList from './components/journeyList';
+import NavigationBar from './components/Navbar';
+import StationList from './components/StationList';
+import JourneyList from './components/JourneyList';
 import HomePage from './pages/homepage';
-import SingleStation from './components/singleStation';
+import SingleStation from './components/SingleStation';
 
 
 const router = createBrowserRouter([
