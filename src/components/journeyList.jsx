@@ -11,15 +11,19 @@ import {
 const JourneyList = () => {
 
   const [journeyData, setJourneyData] = useState([]);
+  //Lisätty response headerin dataa varten:
+  const [totalPages, setTotalPages] = useState(0);
 
   //------------GET DATA------------//
   useEffect(() => {
     getJourneyData(0)
   },[]);
 
-  const getJourneyData = (newPageIndex) => {
-    JourneyService.getPaginatedJourneys(newPageIndex, 100).then(data => {
-        setJourneyData(data)
+  const getJourneyData = (newIndex) => {
+    JourneyService.getPaginatedJourneys(newIndex, 100).then(data => {
+        setJourneyData(data.responseData)
+        console.log(data.responseData)
+        setTotalPages(data.totalPageCount)
     })
   };
 
@@ -45,7 +49,7 @@ const JourneyList = () => {
     data: journeyData ?? defaultData,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    pageCount: 15632 ?? -1,
+    pageCount: totalPages ?? -1,
     state: {
       pagination,
     },
