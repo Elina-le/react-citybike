@@ -10,10 +10,10 @@ export const columns = [
     columnHelper.accessor('returnStationName', {
         header: 'Return Station',
     }),
-    columnHelper.accessor('kilometers', {
+    columnHelper.accessor('coveredKilometers', {
         header: 'Covered Distance km',
     }),
-    columnHelper.accessor('minutes', {
+    columnHelper.accessor('durationTime', {
         header: 'Duration',
     }),
 ]
