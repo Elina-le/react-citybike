@@ -1,12 +1,12 @@
 import React from "react";
+import Hero from './Hero';
 import { Link } from 'react-router-dom';
 import styles from './homepage.module.css'; // Import the CSS file
 
 const HomePage = () => {
     return (
         <div>
-            <h1>City Bike Data</h1>
-            <h4>of Helsinki Capital Area</h4>
+            <Hero />
             <div className={styles.section}>
                 <h2>About Stations</h2>
                 <p>Brief description about bike stations...</p>
