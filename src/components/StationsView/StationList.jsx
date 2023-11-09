@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import StationService from "../services/stations";
+import StationService from "../../services/stations";
 import { Link } from 'react-router-dom';
 
 const StationList = () => {

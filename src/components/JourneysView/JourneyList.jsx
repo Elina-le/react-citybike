@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useMemo} from "react";
-import JourneyService from "../services/journeys";
+import JourneyService from "../../services/journeys";
 //Tanstack Table:
 import {
     useReactTable,

@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
-import StationService from "../services/stations";
+import StationService from "../../services/stations";
 import { useLocation, useParams } from 'react-router-dom';
 import { useJsApiLoader, useLoadScript } from "@react-google-maps/api";
-import Map from "../components/Map";
+import Map from "./Map";
 
 
 const SingleStation = () => {

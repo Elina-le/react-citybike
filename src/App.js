@@ -4,10 +4,10 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import NavigationBar from './components/Navbar';
-import StationList from './components/StationList';
-import JourneyList from './components/JourneyList';
-import HomePage from './pages/homepage';
-import SingleStation from './components/SingleStation';
+import StationList from './components/StationsView/StationList';
+import JourneyList from './components/JourneysView/JourneyList';
+import HomePage from './components/HomePage/homepage';
+import SingleStation from './components/SingleStationView/SingleStation';
 
 
 const router = createBrowserRouter([
