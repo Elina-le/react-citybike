@@ -1,0 +1,27 @@
+.footer {
+    background-color: #333;
+    font-size: large;
+    padding: 3.5rem 0;
+    text-align: center;
+  }
+  
+  .footerContent {
+     color: #fff;
+  }
+
+  .footerContent a {
+    color: #fff;
+  }
+
+  .footerContent a:hover {
+    color: skyblue;
+  }
+
+  .linkSection {
+    margin-top: 3rem;
+  }
+
+  .upperLink {
+    display: block;
+    margin: 8px 0
+  }

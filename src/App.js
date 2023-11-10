@@ -2,8 +2,8 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import NavigationBar from './components/Navbar';
+import Footer from './components/Footer';
 import StationList from './components/StationsView/StationList';
 import JourneyList from './components/JourneysView/JourneyList';
 import HomePage from './components/HomePage/homepage';
@@ -22,6 +22,7 @@ function App() {
     <div className="App">
       <NavigationBar />
       <RouterProvider router={router} />
+      <Footer />
     </div>
   );
 }
