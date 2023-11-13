@@ -1,5 +1,6 @@
 import React, {useState, useEffect, useMemo} from "react";
 import JourneyService from "../../services/journeys";
+import Loading from '../Loading';
 //Tanstack Table:
 import {
     useReactTable,
@@ -11,7 +12,7 @@ import {
 const JourneyList = () => {
 
   const [journeyData, setJourneyData] = useState([]);
-  //Lisätty response headerin dataa varten:
+  const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
 
   //------------GET DATA------------//
@@ -24,6 +25,7 @@ const JourneyList = () => {
         setJourneyData(data.responseData)
         console.log(data.responseData)
         setTotalPages(data.totalPageCount)
+        setLoading(false);
     })
   };
 
@@ -61,39 +63,40 @@ const JourneyList = () => {
   return (
     <>
       <h1>Journeys</h1>
-      <table className="table">
-        <thead>
-          {table.getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
-              {headerGroup.headers.map(header => (
-                <th key={header.id}>
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext())
-                  }
-                </th>
-              ))}
-            </tr>
-          ))}
-        </thead>
-        <tbody>
-          {table.getRowModel().rows.map(row => (
-            <tr key={row.id}>
-              {row.getVisibleCells().map(cell => (
-                <td key={cell.id}>
-                  {flexRender(
-                    cell.column.columnDef.cell, 
-                    cell.getContext()
-                  )}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
+      { loading ? <Loading /> :
+        <table className="table">
+          <thead>
+            {table.getHeaderGroups().map(headerGroup => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map(header => (
+                  <th key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext())
+                    }
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody>
+            {table.getRowModel().rows.map(row => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map(cell => (
+                  <td key={cell.id}>
+                    {flexRender(
+                      cell.column.columnDef.cell, 
+                      cell.getContext()
+                    )}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      }
       {/* -----------------------FIRST PAGE-------------------------- */}
       <button
         className="border rounded p-1"
@@ -161,6 +164,7 @@ const JourneyList = () => {
           className="border p-1 rounded w-16"
         />
       </span> 
+    
     </>
   )
 }

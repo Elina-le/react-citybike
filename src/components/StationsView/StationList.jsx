@@ -1,17 +1,20 @@
 import React, {useState, useEffect} from "react";
 import StationService from "../../services/stations";
 import { Link } from 'react-router-dom';
+import Loading from '../Loading';
 
 const StationList = () => {
 
     const [stationData, setStationData] = useState([]);
     const [searchItem, setSearchItem] = useState("")
     const [filteredStations, setFilteredStations] = useState([])
+    const [loading, setLoading] = useState(true);
  
     useEffect(() => {
         StationService.getAll().then(data => {
-            setStationData(data)
-            setFilteredStations(data)
+            setStationData(data);
+            setFilteredStations(data);
+            setLoading(false);
         })
     },[])
 
@@ -28,7 +31,6 @@ const StationList = () => {
     return (
         <div>
             <h1>Station List</h1>
-
             <input
                 type="text"
                 value={searchItem}
@@ -36,10 +38,9 @@ const StationList = () => {
                 placeholder='Type to search'
             />
 
-            {filteredStations.map(data => 
+            { loading ? <Loading /> : filteredStations.map(data => 
                 (<p key={data.id}><Link to={`/stations/${data.id}`} state={{...data}}>{data.nimi}</Link></p>)
             )}
-
         </div>
     )
 }
