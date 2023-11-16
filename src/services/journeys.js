@@ -2,40 +2,27 @@ import Axios from "axios";
 
 const baseUrl = "https://localhost:7077/api/Journeys";
 
-// const getPaginatedJourneys = (pageIndex, pageSize) => {
-
-//     try {
-//         const request = Axios.get(baseUrl, {
-//             params: {
-//                 page: pageIndex,
-//                 pageSize: pageSize
-//             }
-//         });
-
-//         return request.then(response => response.data)
-//     } catch(error) {
-//         console.log(error);
-//     }
-// }
-
 const getPaginatedJourneys = async (pageIndex, pageSize) => {
-      try {
-      const response = await Axios.get(baseUrl, {
-        params: {
-          page: pageIndex,
-          pageSize: pageSize
-        }
-      })
+  
+  var responseData = [];
+  var totalPageCount = 0;
 
-      const responseData = response.data;
-      const totalPageCount = response.headers["x-total-pages"];
+  await Axios
+    .get(baseUrl, {
+      params: {
+        page: pageIndex,
+        pageSize: pageSize
+    }})
+    .then(response => {
+      responseData = response.data;
+      totalPageCount = response.headers["x-total-pages"];
+    })
+    .catch(error => {
+      throw error;
+    });
 
-      return { responseData, totalPageCount };
-    }
-      catch (error) {
-        console.log(error);
-        throw error; // Re-throw the error to handle it in the component where this function is called
-      }
-  };
+  return { responseData, totalPageCount };
+};
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default { getPaginatedJourneys }
