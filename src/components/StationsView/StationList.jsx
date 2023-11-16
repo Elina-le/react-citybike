@@ -2,20 +2,30 @@ import React, {useState, useEffect} from "react";
 import StationService from "../../services/stations";
 import { Link } from 'react-router-dom';
 import Loading from '../Loading';
+import { useErrorBoundary } from 'react-error-boundary'
+
 
 const StationList = () => {
+
+    const { showBoundary } = useErrorBoundary();
 
     const [stationData, setStationData] = useState([]);
     const [searchItem, setSearchItem] = useState("")
     const [filteredStations, setFilteredStations] = useState([])
     const [loading, setLoading] = useState(true);
- 
-    useEffect(() => {
+
+    const loadData = () => {
         StationService.getAll().then(data => {
             setStationData(data);
             setFilteredStations(data);
             setLoading(false);
-        })
+        }).catch(error => {
+            showBoundary(error)
+        });
+    }
+
+    useEffect(() => {
+        loadData()
     },[])
 
     const handleSearchInputChange = (event) => {
@@ -44,5 +54,6 @@ const StationList = () => {
         </div>
     )
 }
+
 
 export default StationList;

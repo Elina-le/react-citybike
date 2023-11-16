@@ -1,4 +1,5 @@
 import React, {useState, useEffect, useMemo} from "react";
+import { useErrorBoundary } from 'react-error-boundary'
 import JourneyService from "../../services/journeys";
 import Loading from '../Loading';
 //Tanstack Table:
@@ -7,27 +8,36 @@ import {
     flexRender,
     getCoreRowModel
   } from '@tanstack/react-table'
-  import { columns } from './columns';
+import { columns } from './columns';
+
 
 const JourneyList = () => {
 
   const [journeyData, setJourneyData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
+  
+  const { showBoundary } = useErrorBoundary();
 
   //------------GET DATA------------//
-  useEffect(() => {
-    getJourneyData(0)
-  },[]);
-
   const getJourneyData = (newIndex) => {
-    JourneyService.getPaginatedJourneys(newIndex, 100).then(data => {
+    JourneyService.getPaginatedJourneys(newIndex, 100).then(
+      data => {
+        console.log(data)
         setJourneyData(data.responseData)
         console.log(data.responseData)
         setTotalPages(data.totalPageCount)
         setLoading(false);
-    })
+      }
+    ).catch (error => {
+      console.log("Tämä on error journeysListin datan haku pyynnöstä: " + error)
+      showBoundary(error)
+    });
   };
+
+  useEffect(() => {
+    getJourneyData(0)
+  },[]);
 
   //-----------PAGINATION-----------//
   const [{ pageIndex, pageSize }, setPagination] =
@@ -63,7 +73,7 @@ const JourneyList = () => {
   return (
     <>
       <h1>Journeys</h1>
-      { loading ? <Loading /> :
+      { loading ? <Loading /> : 
         <table className="table">
           <thead>
             {table.getHeaderGroups().map(headerGroup => (

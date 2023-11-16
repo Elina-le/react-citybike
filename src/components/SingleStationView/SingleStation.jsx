@@ -1,17 +1,12 @@
 import React, {useState, useEffect} from "react";
 import StationService from "../../services/stations";
 import { useLocation, useParams } from 'react-router-dom';
-import { useJsApiLoader, useLoadScript } from "@react-google-maps/api";
+import { useJsApiLoader } from "@react-google-maps/api";
 import Map from "./Map";
 import Loading from '../Loading';
+import { useErrorBoundary } from 'react-error-boundary'
 
 const SingleStation = () => {
-
-    //Tämä toimii muuten, mutta tämän kanssa ei näy Marker-komponentti:
-    
-    // const {isLoaded} = useLoadScript({
-    //         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    // });
 
     const {isLoaded} = useJsApiLoader({
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -21,12 +16,20 @@ const SingleStation = () => {
     const { id } = useParams();
     const [stationCalculations, setStationCalculations] = useState([]);
     const [loading, setLoading] = useState(true);
- 
-    useEffect(() => {
+    const { showBoundary } = useErrorBoundary();
+
+    const loadData = () => {
         StationService.getById(id).then(data => {
             setStationCalculations(data)
             setLoading(false);
-        })
+        }).catch(error => {
+            showBoundary(error)
+        });
+        
+    }
+ 
+    useEffect(() => {
+       loadData()
     },[id])
 
     return (
