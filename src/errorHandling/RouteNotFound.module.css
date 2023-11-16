@@ -1,0 +1,14 @@
+.errorpage {
+    padding: 7rem  1rem;
+}
+
+.link404 {
+    color: black;
+    font-weight: 600;
+    margin: 7px;
+}
+
+.image404 {
+    max-width: 20rem;
+    margin-bottom: 2rem;
+}
