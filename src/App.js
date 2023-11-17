@@ -13,7 +13,6 @@ import StationList from './components/StationsView/StationList';
 import SingleStation from './components/SingleStationView/SingleStation';
 
 
-
 const errorHandler = (error, errorInfo) => {
   console.log('Loggin', error, errorInfo)
 }
