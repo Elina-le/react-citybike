@@ -3,10 +3,16 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 function NavigationBar() {
+
+  const containerStyle = {
+    maxWidth: 1090,
+    padding: '0 48px',
+    margin: 'auto'
+  };
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary" data-bs-theme="dark" >
-      <Container>
-        
+      <Container style={containerStyle}>
         <Navbar.Brand href="/">City Bike App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
