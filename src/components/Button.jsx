@@ -7,13 +7,15 @@ const Button = ({ onClick, color, backgroundColor, text }) => {
     const defaulTextColor = 'black'
 
     const buttonStyle = {
+        border: 'none',
         borderRadius: 50,
         backgroundColor: backgroundColor || defaultBgColor,
         color: color || defaulTextColor,
-        fontSize: 15,
+        fontSize: 18,
         height: 40,
         margin: '10px 0',
-        padding: '0 20px'
+        padding: '0 20px',
+        width: 200
       };
 
   return (
