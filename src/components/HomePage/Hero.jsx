@@ -7,7 +7,7 @@ const Hero = () => {
         <div className={styles.overlay}></div>
         <div className={styles.text}>
             <h1 className={styles.heading}>City Bike Data</h1>
-            <h4 className={styles.subHead}>of Helsinki Capital Area</h4>
+            <h2 className={styles.subHead}>of Helsinki Capital Area</h2>
         </div>
     </div>
   );
