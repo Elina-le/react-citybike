@@ -1,19 +1,29 @@
 import React from 'react';
 import styles from './Footer.module.css';
-import GithubIcon from './GithubIcon'; // Import the Icon component
+import GithubIcon from './GithubIcon';
+import CopyrightIcon from './CopyrightIcon';
 
 const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.footerContent}>
-        <div>
-          <p>© 2023 Elina Lepistö</p>
-          <p>Data by City Bike Finland</p>
+        <div className={styles.contentSection}>
+          <div className={styles.iconSection}>
+            <CopyrightIcon />
+          </div>
+          <div className={styles.textSection}>
+            <p className={styles.footerText}>2023 Elina Lepistö</p>
+            <p className={styles.footerText}>Data by City Bike Finland</p>
+          </div>
         </div>
-        <div className={styles.linkSection}>
-          <GithubIcon />
-          <a className={styles.upperLink} href="https://github.com/" target="blank">Front-end project</a>
-          <a href="https://github.com/" target="blank">Back-end project</a>
+        <div className={styles.contentSection}>
+          <div className={styles.iconSection}>
+            <GithubIcon />
+          </div>
+          <div className={styles.textSection}>
+            <a className={styles.footerText} href="https://github.com/" target="blank">Front-end project</a>
+            <a className={styles.footerText} href="https://github.com/" target="blank">Back-end project</a>
+          </div>
         </div>
       </div>
     </footer>
