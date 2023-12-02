@@ -1,0 +1,31 @@
+.stationsSection {
+    padding: 7rem 2rem;
+    display: flex;
+    justify-content: center;
+    background-color: #F4F6FF;
+}
+
+.stationsSection {
+    /* align-items: left; */
+    /* width: 50%; */
+  margin: 0 auto;
+  text-align: left;
+}
+
+.input {
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin: 1.2rem 0;
+  padding: 10px 20px;
+  width: 400px;
+}
+
+.linkContainer {
+    margin: 3rem 0;
+}
+
+.link {
+  color: black;
+  text-decoration: none;  
+}
