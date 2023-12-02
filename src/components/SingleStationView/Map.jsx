@@ -1,5 +1,6 @@
 import React, {useMemo} from "react";
-import { GoogleMap, Marker } from "@react-google-maps/api";
+import { GoogleMap, MarkerF } from "@react-google-maps/api";
+import styles from './Map.module.css';
 
 const Map = (props) => {
 
@@ -7,12 +8,12 @@ const Map = (props) => {
     const y = parseFloat(props.y) 
     const center = useMemo(() => ({ lat: y, lng: x }), []);
 
-    return <div className="map">
-        <GoogleMap mapContainerClassName="map-container"
+    return <div className={styles.map}>
+        <GoogleMap mapContainerClassName={styles.mapContainer}
         center={center} 
         zoom={15} 
         options={{streetViewControl: false}}>
-            <Marker position={{ lat: y, lng: x }}/>
+            <MarkerF position={{ lat: y, lng: x }}/>
         </GoogleMap>
     </div>
 }
