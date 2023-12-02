@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ onClick, color, backgroundColor, text }) => {
+const Button = ({ onClick, color, backgroundColor, text, width, margin }) => {
 
     const defaultBgColor = '#FFC436';
-    const defaulTextColor = 'black'
+    const defaulTextColor = 'black';
+    const defaultWidth = '200px'
+    const defaultMargin = '10px 0'
 
     const buttonStyle = {
         border: 'none',
@@ -13,9 +15,9 @@ const Button = ({ onClick, color, backgroundColor, text }) => {
         color: color || defaulTextColor,
         fontSize: 18,
         height: 40,
-        margin: '10px 0',
+        margin: margin|| defaultMargin,
         padding: '0 20px',
-        width: 200
+        width: width || defaultWidth
       };
 
   return (
@@ -29,7 +31,9 @@ Button.propTypes = {
     onClick: PropTypes.func,
     color: PropTypes.string,
     text: PropTypes.string.isRequired,
-    backgroundColor: PropTypes.string
+    backgroundColor: PropTypes.string,
+    margin: PropTypes.string,
+    width: PropTypes.string
   };
 
 export default Button;
