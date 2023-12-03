@@ -1,7 +1,12 @@
-import React, {useState, useEffect, useMemo} from "react";
+import React, {useState, useEffect, useMemo, useCallback} from "react";
 import { useErrorBoundary } from 'react-error-boundary'
 import JourneyService from "../../services/journeys";
+import styles from './JourneyList.module.css';
 import Loading from '../Loading';
+import NextpageIcon from '../NextpageIcon';
+import LastpageIcon from '../LastpageIcon';
+import PreviouspageIcon from '../PreviouspageIcon';
+import FirstpageIcon from '../FirstpageIcon';
 //Tanstack Table:
 import {
     useReactTable,
@@ -16,34 +21,31 @@ const JourneyList = () => {
   const [journeyData, setJourneyData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [totalPages, setTotalPages] = useState(0);
-  
+  const [inputError, setInputError] = useState('');
   const { showBoundary } = useErrorBoundary();
 
   //------------GET DATA------------//
-  const getJourneyData = (newIndex) => {
-    JourneyService.getPaginatedJourneys(newIndex, 100).then(
-      data => {
-        console.log(data)
+  const getJourneyData =  useCallback((newIndex) => {
+    JourneyService.getPaginatedJourneys(newIndex, 15)
+      .then(data => {
         setJourneyData(data.responseData)
-        console.log(data.responseData)
         setTotalPages(data.totalPageCount)
         setLoading(false);
-      }
-    ).catch (error => {
-      console.log("Tämä on error journeysListin datan haku pyynnöstä: " + error)
-      showBoundary(error)
-    });
-  };
-
+        }
+      ).catch (error => {
+        showBoundary(error)
+      });
+  }, [showBoundary]);
+  
   useEffect(() => {
     getJourneyData(0)
-  },[]);
+  },[getJourneyData]);
 
   //-----------PAGINATION-----------//
   const [{ pageIndex, pageSize }, setPagination] =
   useState({
     pageIndex: 0,
-    pageSize: 10,
+    pageSize: 15,
   })
 
   const defaultData = useMemo(() => [], [])
@@ -70,112 +72,127 @@ const JourneyList = () => {
     debugTable: true
   })
 
+  const handleInputChange = (e) => {
+    const inputValue = e.target.value;
+    const pageNumber = inputValue ? Number(e.target.value) - 1 : 0
+    console.log(pageNumber)
+    if (pageNumber >= 0 && pageNumber <= table.getPageCount()) {
+      setInputError('');
+      table.setPageIndex(pageNumber)
+      getJourneyData(pageNumber);
+    }
+    else {
+      setInputError('Please enter a valid page number');
+    }
+  }
+
   return (
-    <>
-      <h1>Journeys</h1>
-      { loading ? <Loading /> : 
-        <table className="table">
-          <thead>
-            {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map(header => (
-                  <th key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext())
-                    }
-                  </th>
+    <div className={styles.journeysSection}>
+      <h1 className={styles.head}>Journeys</h1>
+      { loading ? <Loading /> :
+        <div className={styles.tableSection}>
+          <div className={styles.tableContainer}>
+            <table className="table">
+              <thead>
+                {table.getHeaderGroups().map(headerGroup => (
+                  <tr key={headerGroup.id}>
+                    {headerGroup.headers.map(header => (
+                      <th key={header.id}>
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext())
+                        }
+                      </th>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody>
-            {table.getRowModel().rows.map(row => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map(cell => (
-                  <td key={cell.id}>
-                    {flexRender(
-                      cell.column.columnDef.cell, 
-                      cell.getContext()
-                    )}
-                  </td>
+              </thead>
+              <tbody>
+                {table.getRowModel().rows.map(row => (
+                  <tr key={row.id}>
+                    {row.getVisibleCells().map(cell => (
+                      <td key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    ))}
+                  </tr>
                 ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+              </tbody>
+            </table>
+          </div>
+        </div>
       }
-      {/* -----------------------FIRST PAGE-------------------------- */}
-      <button
-        className="border rounded p-1"
-        onClick={() => {
-          getJourneyData(0);
-          table.setPageIndex(0);
-        }}
-        disabled={!table.getCanPreviousPage()}>
-        {'<<'}
-      </button>
 
-      {/* -----------------------PREVIOUS PAGE----------------------- */}
-      <button
-        className="border rounded p-1"
-        onClick={() => {
-          table.previousPage();
-          getJourneyData(table.getState().pagination.pageIndex - 1);
-        }}
-        disabled={!table.getCanPreviousPage()}>
-        {'<'}
-      </button>
+      {/* ------------------------PAGE NUMBER---------------------- */}
+      <div className={styles.pageNumberContainer}>
+          Page {' '}
+          {table.getState().pagination.pageIndex + 1} /{' '}
+          {table.getPageCount()}
+      </div>
 
-      {/* ------------------------NEXT PAGE-------------------------- */}
-      <button
-        className="border rounded p-1"
-        onClick={() => {
-          table.nextPage();
-          getJourneyData(table.getState().pagination.pageIndex + 1);
-        }}
-        disabled={!table.getCanNextPage()}>
-        {'>'}
-      </button>
+      <div className={styles.buttonContainer}>
+        {/* -----------------------FIRST PAGE-------------------------- */}
+        <button
+          className={styles.buttonDarker}
+          onClick={() => {
+            getJourneyData(0);
+            table.setPageIndex(0);
+          }}
+          disabled={!table.getCanPreviousPage()}>
+          {<FirstpageIcon />}
+        </button>
 
-      {/* ------------------------LAST PAGE-------------------------- */}
-      <button
-        className="border rounded p-1"
-        onClick={() => {
-          getJourneyData(table.getPageCount() - 1);
-          table.setPageIndex(table.getPageCount() - 1);
-        }}
-        disabled={!table.getCanNextPage()}>
-        {'>>'}
-      </button>
+        {/* -----------------------PREVIOUS PAGE----------------------- */}
+        <button
+          className={styles.buttonLighter}
+          onClick={() => {
+            table.previousPage();
+            getJourneyData(table.getState().pagination.pageIndex - 1);
+          }}
+          disabled={!table.getCanPreviousPage()}>
+          {<PreviouspageIcon />}
+        </button>
 
-      {/* ----------------------PAGE NUMBER LABEL-------------------- */}
-      <span className="flex items-center gap-1">
-        <div>Page</div>
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of{' '}
-            {table.getPageCount()}
-          </strong>
-      </span>
+        {/* ------------------------NEXT PAGE-------------------------- */}
+        <button
+          className={styles.buttonLighter}
+          onClick={() => {
+            table.nextPage();
+            getJourneyData(table.getState().pagination.pageIndex + 1);
+          }}
+          disabled={!table.getCanNextPage()}>
+          {<NextpageIcon />}
+        </button>
 
-      {/* ---------------------GO TO PAGE INPUT---------------------- */}
-      <span className="flex items-center gap-1">
-        Go to page:
+        {/* ------------------------LAST PAGE-------------------------- */}
+        <button
+          className={styles.buttonDarker}
+          onClick={() => {
+            getJourneyData(table.getPageCount() - 1);
+            table.setPageIndex(table.getPageCount() - 1);
+          }}
+          disabled={!table.getCanNextPage()}>
+          {<LastpageIcon />}
+        </button>
+      </div>
+
+      {/* ---------------------------INPUT---------------------------- */}
         <input
           type="number"
-          defaultValue={table.getState().pagination.pageIndex + 1}
-          onChange={e => {
-            const pageNumber = e.target.value ? Number(e.target.value) - 1 : 0
-            table.setPageIndex(pageNumber)
-            getJourneyData(pageNumber);
-          }}
-          className="border p-1 rounded w-16"
+          min="1"
+          max={table.getPageCount()}
+          name="pageNumber"
+          placeholder="Go to page"
+          onChange={handleInputChange}
+          className={styles.input}
         />
-      </span> 
-    
-    </>
+        {inputError && <p style={{ color: 'red' }}>{inputError}</p>}
+    </div>
   )
 }
 
