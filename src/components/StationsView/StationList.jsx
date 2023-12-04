@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useCallback} from "react";
 import StationService from "../../services/stations";
 import { Link } from 'react-router-dom';
 import Loading from '../Loading';
@@ -15,7 +15,7 @@ const StationList = () => {
     const [filteredStations, setFilteredStations] = useState([])
     const [loading, setLoading] = useState(true);
 
-    const loadData = () => {
+    const loadData = useCallback(() => {
         StationService.getAll().then(data => {
             setStationData(data);
             setFilteredStations(data);
@@ -23,11 +23,11 @@ const StationList = () => {
         }).catch(error => {
             showBoundary(error)
         });
-    }
+    }, [showBoundary]);
 
     useEffect(() => {
         loadData()
-    },[])
+    },[loadData])
 
     const handleSearchInputChange = (event) => {
         const searchTerm = event.target.value;
