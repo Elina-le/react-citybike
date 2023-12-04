@@ -6,7 +6,7 @@ const Map = (props) => {
 
     const x = parseFloat(props.x)
     const y = parseFloat(props.y) 
-    const center = useMemo(() => ({ lat: y, lng: x }), []);
+    const center = useMemo(() => ({ lat: y, lng: x }), [x, y]);
 
     return <div className={styles.map}>
         <GoogleMap mapContainerClassName={styles.mapContainer}
