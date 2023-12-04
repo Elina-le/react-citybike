@@ -60,9 +60,9 @@ const StationList = () => {
                     placeholder='Type to search'
                 />
                 <div>
-                    <Button text="All Stations" backgroundColor="#0174be" color="white" width="126px" margin="0 10px 0 0" onClick={clearInput}/>
-                    <Button text="Helsinki" backgroundColor="#035ba4" color="white" width="126px" margin="0 10px 0 0" onClick={handleCityClick("Helsinki")}/>
-                    <Button text="Espoo" backgroundColor="#035ba4" color="white" width="126px" margin="0" onClick={handleCityClick("Espoo")}/>
+                    <Button text="All Stations" backgroundColor="#0174be" color="white" width="130px" margin="0 6px 0 0" onClick={clearInput}/>
+                    <Button text="Helsinki" backgroundColor="#035ba4" color="white" width="130px" margin="0 6px 0 0" onClick={handleCityClick("Helsinki")}/>
+                    <Button text="Espoo" backgroundColor="#035ba4" color="white" width="130px" margin="0" onClick={handleCityClick("Espoo")}/>
                 </div>
                 <div className={styles.linkContainer}>
                     { loading ? <Loading /> : filteredStations.map(data => 
