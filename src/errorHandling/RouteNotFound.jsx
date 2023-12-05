@@ -1,7 +1,7 @@
 import styles from './RouteNotFound.module.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Image404 from '../404.png'
+import Image404 from '../visualAssets/images/404.png'
 
 export function RouteNotFound() {
     

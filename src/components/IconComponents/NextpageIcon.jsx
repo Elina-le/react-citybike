@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Icon } from '../angle-right-solid.svg';
+import { ReactComponent as Icon } from '../../swgIcons/angle-right-solid.svg';
 
 const NextpageIcon = () => {
   return (

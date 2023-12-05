@@ -3,10 +3,10 @@ import { useErrorBoundary } from 'react-error-boundary'
 import JourneyService from "../../services/journeys";
 import styles from './JourneyList.module.css';
 import Loading from '../Loading';
-import NextpageIcon from '../NextpageIcon';
-import LastpageIcon from '../LastpageIcon';
-import PreviouspageIcon from '../PreviouspageIcon';
-import FirstpageIcon from '../FirstpageIcon';
+import NextpageIcon from '../Icons/NextpageIcon';
+import LastpageIcon from '../Icons/LastpageIcon';
+import PreviouspageIcon from '../Icons/PreviouspageIcon';
+import FirstpageIcon from '../Icons/FirstpageIcon';
 //Tanstack Table:
 import {
     useReactTable,

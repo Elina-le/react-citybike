@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Footer.module.css';
-import GithubIcon from './GithubIcon';
-import CopyrightIcon from './CopyrightIcon';
+import GithubIcon from './Icons/GithubIcon';
+import CopyrightIcon from './Icons/CopyrightIcon';
 
 const Footer = () => {
   return (

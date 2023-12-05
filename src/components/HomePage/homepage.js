@@ -3,8 +3,8 @@ import Hero from './Hero';
 import { Link } from 'react-router-dom';
 import styles from './homepage.module.css';
 import Button from '../Button';
-import ImageStations from '../../stations.png'
-import ImageJourneys from '../../journeys.png'
+import ImageStations from '../../visualAssets/images/stations.png'
+import ImageJourneys from '../../visualAssets/images/journeys.png'
 
 const HomePage = () => {
     return (

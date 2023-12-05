@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Icon } from '../copyright-solid.svg';
+import { ReactComponent as Icon } from '../../swgIcons/copyright-solid.svg';
 
 const IconStyle = {
     width: 45,
