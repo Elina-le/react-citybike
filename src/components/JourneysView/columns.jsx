@@ -11,7 +11,7 @@ export const columns = [
         header: 'Return Station',
     }),
     columnHelper.accessor('coveredKilometers', {
-        header: 'Covered Distance km',
+        header: 'Distance km',
     }),
     columnHelper.accessor('durationTime', {
         header: 'Duration',

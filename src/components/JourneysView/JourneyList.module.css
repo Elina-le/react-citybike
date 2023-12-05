@@ -14,6 +14,7 @@
 .tableContainer {
     max-width: 1200px;
     margin: auto;
+    overflow-x:auto;
     padding: 3rem;
 }
 
@@ -66,4 +67,27 @@ button[disabled]{
     padding: 0 20px;
     width: 350px;
 }
+
+/* Medium */
+@media only screen and (max-width: 768px) {
+    .journeysSection {
+        padding: 5rem 0;
+    }
+  }
+
+/* Extra Small*/
+  @media only screen and (max-width: 400px) {
+    .journeysSection {
+        padding: 3rem 0;
+    }
+    .input {
+        width: 90%;
+    }
+    .buttonDarker {
+        width: 4rem;
+    }
+    .buttonLighter {
+        width: 4rem;
+    }
+  }
 
