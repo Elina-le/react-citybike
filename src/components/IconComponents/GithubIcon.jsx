@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Icon } from '../../swgIcons/githubFA.svg';
+import { ReactComponent as Icon } from '../../visualAssets/swgIcons/githubFA.svg';
 import styles from './GithubIcon.module.css';
 
 const GithubIcon = () => {

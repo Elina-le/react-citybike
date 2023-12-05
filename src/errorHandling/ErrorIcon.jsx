@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Icon } from '.././swgIcons/circle-exclamation-solid.svg';
+import { ReactComponent as Icon } from '../visualAssets/swgIcons/circle-exclamation-solid.svg';
 import styles from './ErrorIcon.module.css';
 
 const GithubIcon = () => {
