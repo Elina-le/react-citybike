@@ -5,8 +5,8 @@ import Navbar from 'react-bootstrap/Navbar';
 function NavigationBar() {
 
   const containerStyle = {
-    maxWidth: 1090,
-    padding: '0 48px',
+    maxWidth: 1440,
+    padding: '0 8%',
     margin: 'auto'
   };
 

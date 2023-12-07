@@ -7,56 +7,46 @@
     justify-content: center;
     line-height: 27px;
     padding: 7rem 3rem 8rem;
-
-      /* border: 1px solid #ccc; */
-
   }
-  .widthContainer {
-    max-width: 1000px;
-    display: flex;
-  }
-
 
   .stationContent {
     margin-right: 8rem;
     text-align: left;
   }
 
-  .imageContainer {
-    flex-shrink: 0;
-  }
-
   .stationImage {
-    width: 14rem;
+    height: 15rem;
   }
-
 
   /* .................Journey Section..................*/
-
   .journeySection {
     align-items: center;
-    background-color: #EBECF0;
-    /* background-color: #8ea3f5; */
+    background-color: #F4F6FF;
     font-size: 18px;
     display: flex;
     justify-content: center;
     line-height: 27px;
     padding: 7rem 3rem 8rem;
-    border: 1px solid #ccc;
   }
 
   .journeyContent {
-    /* flex: 1; */
     margin-left: 8rem;
     text-align: left;
   }
 
   .journeyImage {
-    width: 15rem;
+    height: 15rem;
   }
 
-
   /* .................Common..................*/
+  .widthContainer {
+    display: flex;
+    max-width: 1000px;
+  }
+
+  .imageContainer {
+    flex-shrink: 0;
+  }
 
   .head {
     margin-bottom: 16px;
@@ -65,3 +55,107 @@
   .para {
     margin-bottom: 32px;
   }
+
+  /* ...............Media Query................*/
+
+  /* ...XL...*/
+  @media only screen and (max-width: 1155px) {
+    .widthContainer {
+      padding: 0 3%;
+    }
+  }
+
+  /* ...L...*/
+  @media only screen and (max-width: 992px) {
+    .stationContent {
+      margin-right: 5rem;
+    }
+    .journeyContent {
+      margin-left: 5rem;
+    }
+    .stationImage {
+      height: 12rem;
+    }
+    .journeyImage {
+      height: 12rem;
+    }
+  }
+
+  /* ...M...*/
+  @media only screen and (max-width: 768px) {
+    .stationContent {
+      margin-right: 4rem;
+    }
+    .journeyContent {
+      margin-left: 5rem;
+    }
+    .stationImage {
+      height: 10rem;
+    }
+    .journeyImage {
+      height: 10rem;
+    }
+  }
+
+  @media only screen and (max-width: 715px) {
+    .stationContent {
+      font-size: 16px;
+      margin-right: 2rem;
+    }
+    .journeyContent {
+      font-size: 16px;
+      margin-left: 3rem;
+    }
+    .widthContainer {
+      padding: 0 2%;
+    }
+    .stationImage {
+      height: 6rem;
+    }
+    .journeyImage {
+      height: 6rem;
+    }
+    .imageContainer {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      padding-bottom: 2rem;
+    }
+  }
+
+  /* ...S...*/
+  @media only screen and (max-width: 561px) {
+    .stationSection {
+      padding: 13% 8% 13%;
+    }
+    .journeySection {
+      padding: 13% 8% 13%;
+    }
+    .widthContainer {
+      padding: 0;
+    }
+    .imageContainer {
+      display: none;
+    }
+    .stationContent {
+      margin-right: 0;
+    }
+    .journeyContent {
+      margin-left: 0;
+    }
+  }
+
+    /* ...XS...*/
+    @media only screen and (max-width: 428px) {
+      .stationContent {
+        font-size: 14px;
+      }
+      .journeyContent {
+        font-size: 14px;
+      }
+      .para {
+        margin-bottom: 16px;
+      }
+    }
+
+
