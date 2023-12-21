@@ -1,7 +1,6 @@
 .hero {
     position: relative;
     height: 40rem;
-    /* background-image: url('https://images.pexels.com/photos/6367377/pexels-photo-6367377.jpeg?auto=compress&cs=tinysrgb&w=1600'); */
     background-image: url('https://images.pexels.com/photos/8285469/pexels-photo-8285469.jpeg?auto=compress&cs=tinysrgb&w=1600');
     background-size: cover;
     background-position: center;
