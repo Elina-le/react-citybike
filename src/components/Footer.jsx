@@ -21,8 +21,8 @@ const Footer = () => {
             <GithubIcon />
           </div>
           <div className={styles.textSection}>
-            <a className={styles.footerText} href="https://github.com/" target="blank">Front-end project</a>
-            <a className={styles.footerText} href="https://github.com/" target="blank">Back-end project</a>
+            <a className={styles.footerText} href="https://github.com/Elina-le/react-citybike" target="blank">Front-end project</a>
+            <a className={styles.footerText} href="https://github.com/Elina-le/CityBikeAPI" target="blank">Back-end project</a>
           </div>
         </div>
       </div>
