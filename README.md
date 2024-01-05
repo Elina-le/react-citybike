@@ -63,23 +63,58 @@ Station dataset is by Helsinki Region Transport’s (HSL):
 
 
 
-# Getting Started with Create React App:
+# Running Frontend Locally
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The frontend of this application is built using React, bootstrapped with Create React App.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+-	**Node.js**: Ensure you have Node.js installed on your machine. You can download it from Node.js website.
+-	**NPM (Node Package Manager)**: This comes bundled with Node.js. You can check its installation by running **npm -v** in your terminal.
 
-### `npm start`
+## Clone the repository 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+-	Open your terminal or command prompt.
+-	Navigate to the directory where you want to clone the repository.
+-	Run the following command: **git clone URL**, replacing URL with the repository URL:
+  
+Repository URL: https://github.com/Elina-le/react-citybike.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Install Dependencies
 
-### `npm test`
+-	Navigate to the frontend directory in your terminal
+-	Run **npm install** to install all the necessary dependencies. This step is crucial as it sets up everything needed for the React application to run.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Running the Application
+
+-	Once the dependencies are installed, you can start the server using commad: **npm start**.
+-	This command runs the app in the development mode.
+-	Open http://localhost:3000 to view it in your browser.
+
+## Integrating with the Backend
+
+To fully utilize all the features of this application, it's essential to run it in conjunction with its backend services. The backend handles crucial operations like data processing, API calls, and database interactions.
+
+### Setting Up the Backend
+
+The backend code is maintained in a separate repository. You can access it [here](https://github.com/Elina-le/CityBikeAPI).
+Detailed instructions for setting up and running the backend, including database configuration, are available in the backend repository's README file.
+
+## Dispalying Google Map
+  
+The application utilizes Google Maps for displaying maps in the single station view. To enable this feature, you need to obtain and use your own Google Maps API Key. Follow these steps to set it up:
+
+### Obtaining a Google Maps API Key
+-	Visit the Google Cloud Platform Console.
+-	If you haven't already, create a new project.
+-	Navigate to the "APIs & Services > Credentials" section.
+-	Click on “Create Credentials” and select “API key”. Follow the prompts to create a new API key.
+
+### Configuring the API Key in Your Application
+-	In the root directory of your frontend application, create a file named .env.local.
+-	Inside this file, add the following line:
+
+  REACT_APP_GOOGLE_MAPS_API_KEY="Your API Key Here"
+
+- Replace ’Your API Key Here’ with the API key you obtained from Google Cloud Platform.
+-	Make sure the **.env.local** is listed in your **.gitignore** file.
