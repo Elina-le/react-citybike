@@ -26,6 +26,7 @@ const JourneyList = () => {
 
   //------------GET DATA------------//
   const getJourneyData =  useCallback((newIndex) => {
+    setLoading(true);
     JourneyService.getPaginatedJourneys(newIndex, 15)
       .then(data => {
         setJourneyData(data.responseData)
