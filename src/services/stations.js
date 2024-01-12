@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const baseUrl = "https://localhost:7077/api/Stations";
+const baseUrl = `${process.env.REACT_APP_API_URL}/api/Stations`;
 
 const getAll = () => {
 

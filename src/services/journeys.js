@@ -1,6 +1,6 @@
 import Axios from "axios";
 
-const baseUrl = "https://localhost:7077/api/Journeys";
+const baseUrl = `${process.env.REACT_APP_API_URL}/api/Journeys`;
 
 const getPaginatedJourneys = async (pageIndex, pageSize) => {
   
