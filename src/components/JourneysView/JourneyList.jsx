@@ -139,6 +139,7 @@ const JourneyList = () => {
       <div className={styles.buttonContainer}>
         {/* -----------------------FIRST PAGE-------------------------- */}
         <button
+          id="btn-first"
           className={styles.buttonDarker}
           onClick={() => {
             getJourneyData(0);
@@ -150,6 +151,7 @@ const JourneyList = () => {
 
         {/* -----------------------PREVIOUS PAGE----------------------- */}
         <button
+          id="btn-previous"
           className={styles.buttonLighter}
           onClick={() => {
             table.previousPage();
@@ -161,6 +163,7 @@ const JourneyList = () => {
 
         {/* ------------------------NEXT PAGE-------------------------- */}
         <button
+          id="btn-next"
           className={styles.buttonLighter}
           onClick={() => {
             table.nextPage();
@@ -172,6 +175,7 @@ const JourneyList = () => {
 
         {/* ------------------------LAST PAGE-------------------------- */}
         <button
+          id="btn-last"
           className={styles.buttonDarker}
           onClick={() => {
             getJourneyData(table.getPageCount() - 1);
