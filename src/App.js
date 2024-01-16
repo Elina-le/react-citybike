@@ -5,12 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorPage } from './errorHandling/ErrorPage';
 import { RouteNotFound } from './errorHandling/RouteNotFound';
-import NavigationBar from './components/Navbar';
-import Footer from './components/Footer';
 import HomePage from './components/HomePage/homepage';
 import JourneyList from './components/JourneysView/JourneyList';
 import StationList from './components/StationsView/StationList';
 import SingleStation from './components/SingleStationView/SingleStation';
+import RootLaytout from './components/Root';
 
 
 const errorHandler = (error, errorInfo) => {
@@ -27,11 +26,17 @@ const router = createBrowserRouter([
   {
     element: <ErrorBoundaryLayout />,
     children: [
-      { path: '/', element: <HomePage />},
-      { path: "stations", element: <StationList />},
-      { path: "journeys", element: <JourneyList /> },
-      { path: "/stations/:id", element: <SingleStation />},
-      { path: "*", element: <RouteNotFound />}
+      {
+        path: '/',
+        element: <RootLaytout />,
+        children: [
+          { path: '/', element: <HomePage />},
+          { path: "/stations", element: <StationList />},
+          { path: "/journeys", element: <JourneyList /> },
+          { path: "/stations/:id", element: <SingleStation />},
+          { path: "*", element: <RouteNotFound />}
+        ]
+      }
     ]
   }
 ]);
@@ -39,9 +44,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <div className="App">
-      <NavigationBar />
-        <RouterProvider router={router} />
-      <Footer />
+      <RouterProvider router={router} />
     </div>
   );
 }
