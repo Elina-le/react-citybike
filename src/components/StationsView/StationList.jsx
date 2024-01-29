@@ -66,7 +66,7 @@ const StationList = () => {
                 </div>
                 <div className={styles.linkContainer}>
                     { loading ? <Loading /> : filteredStations.map(data => 
-                        (<p className={styles.stationLink} key={data.id}>
+                        (<p id="statPLink" className={styles.stationLink} key={data.id}>
                             <Link className={styles.link} to={`/stations/${data.id}`} state={{...data}}>{data.nimi}</Link>
                         </p>)
                     )}
