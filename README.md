@@ -3,9 +3,9 @@
 City Bike App is a UI and a backend service for displaying data from journeys made with city bikes in the Helsinki Capital area. 
 The data is owned by City Bike Finland.
 
-You can find project backend [here](https://github.com/Elina-le/CityBikeAPI)
+You can find project backend [here](https://github.com/Elina-le/CityBikeAPI).
 
-The project will soon be hosted online.
+The project is hosted on Netlify: <https://calm-choux-b7c076.netlify.app/>.
 
 
 
